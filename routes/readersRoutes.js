@@ -8,5 +8,6 @@ router.get('/:id', readersController.getReaderById);
 router.post('/', readersController.createReader);
 router.put('/:id', readersController.updateReader);
 router.delete('/:id', readersController.deleteReader);
+router.filt('/filt', readersController.filtReader);
 
 module.exports = router;
