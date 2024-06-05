@@ -1,6 +1,11 @@
 const readersModel = require('../models/readersModel');
 const Reader = require('../models/readersModel');
 
+const filtReader = async (req, res) => {
+  const readers = await readersModel.filtReader();
+  res.json(readers);
+};
+
 const getAllReaders = async (req, res) => {
   const readers = await readersModel.getAllReaders();
   res.json(readers);
