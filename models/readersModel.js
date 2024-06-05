@@ -1,5 +1,20 @@
 const db = require('./db');
 
+const startID = 32100;
+const endID = 32200;
+const filtReader = (startID, endID) => {
+  return new Promise((resolve, reject) => {
+    db.all('SELECT * FROM Читатели WHERE КодЧитателя BETWEEN ? AND ?', [startID, endID], (error, row) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(rows);
+      }
+    });
+  });
+};
+
+
 const getAllReaders = () => {
   return new Promise((resolve, reject) => {
     db.all('SELECT * FROM Читатели', (error, rows) => {
@@ -70,4 +85,4 @@ class Reader {
   }
 }
 
-module.exports = { getAllReaders, getReaderById, createReader, updateReader, deleteReader, Reader };
+module.exports = { getAllReaders, getReaderById, createReader, updateReader, deleteReader, Reader, filtReader };
